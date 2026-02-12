@@ -831,7 +831,21 @@ footer {
     #articleGrid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }/* Khusus untuk layar smartphone yang ramping (iPhone XS, Pro, etc) */
+@media (max-width: 375px) {
+    .time-box span:first-child {
+        font-size: 24px;
     }
+    
+    .launch-info h2 {
+        font-size: 22px;
+    }
+
+    .container {
+        width: 95%;
+        margin-top: 70px;
+    }
+}
 
     /* Banner Mobile */
     .full-width-banner { height: 150px; }
@@ -839,3 +853,4 @@ footer {
     /* Shop Links (Tombol Link) */
     .shop-link { width: 100%; max-width: none; }
 }
+

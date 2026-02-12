@@ -803,4 +803,39 @@ footer {
     height: 100%; 
     object-fit: cover; /* Pastikan gambar mengisi seluruh area 100vw x 200px */
     opacity: 50%;
+}/* ============================================================
+   7. MEDIA QUERIES (PERBAIKAN SELULER) - JANGAN DIHAPUS
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Navbar Mobile */
+    .navbar { padding: 10px 20px; }
+    
+    /* Hero & Teks */
+    .hero h2 { font-size: 28px; }
+
+    /* Coming Soon: Ubah Samping ke Tumpuk Vertikal */
+    .coming-soon-content {
+        flex-direction: column;
+    }
+
+    .launch-info {
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .countdown-timer { gap: 10px; }
+    .time-box span:first-child { font-size: 24px; }
+
+    /* Grid Artikel: Ubah ke 1 Kolom agar tidak sempit */
+    #articleGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Banner Mobile */
+    .full-width-banner { height: 150px; }
+
+    /* Shop Links (Tombol Link) */
+    .shop-link { width: 100%; max-width: none; }
 }

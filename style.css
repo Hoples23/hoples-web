@@ -125,6 +125,7 @@ body {
     text-decoration: none;
     margin: 0 auto;
 }
+
 /* ============================================================
    2. NAVBAR DENGAN EFEK ASLI
    ============================================================ */
@@ -206,6 +207,254 @@ body {
     color: #000;
 }
 
+/* Styling Khusus Halaman shoplinks.html */
+
+.shop-links-container-page {
+
+    /* Hanya untuk memberikan margin di atas daftar link */
+
+    padding-top: 20px;
+
+    padding-bottom: 20px;
+
+}
+
+
+
+.shop-links-container-page h2 {
+
+    margin-bottom: 5px;
+
+}
+
+
+
+.shop-links-container-page p {
+
+    margin-bottom: 30px;
+
+    color: #000000;
+
+}
+
+
+
+/* Penataan Daftar Tautan */
+
+.link-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px; /* Jarak antar tombol */
+
+    width: 100%;
+
+    align-items: center; /* Memastikan semua link terpusat */
+
+}
+
+
+
+/* Tampilan Tombol Tautan */
+
+.shop-link {
+
+    width: 90%;
+
+    max-width: 350px; /* Batasi lebar tombol agar terlihat elegan */
+
+    padding: 15px 25px; /* Padding lebih besar agar mudah diklik */
+
+    text-align: center;
+
+    text-decoration: none;
+
+    font-weight: 520; /* Font lebih tebal */
+
+    font-size: 16px;
+
+    border-radius: 6px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.2s ease-in-out;
+
+}
+
+
+
+.shop-link:hover {
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    transform: translateY(-1px);
+
+}
+
+
+
+/* Styling Khusus untuk Tombol Brand */
+
+/* Ganti warna ini agar sesuai dengan palet Hoples */
+
+.btn-shopee {
+
+    background-color: #f3f3f3;
+
+    color: rgb(5, 5, 5) !important;
+
+    border: 1px solid #000;
+    
+
+}
+
+.btn-tokped {
+
+    background-color: #f3f3f3;
+
+     color: rgb(5, 5, 5) !important;
+
+    border: 1px solid #000;
+
+}
+
+.btn-whatsapp {
+
+    background-color: #f3f3f3;
+
+    color: rgb(5, 5, 5) !important;
+
+    border: 1px solid #000;
+
+}
+
+.btn-website {
+
+    background-color: #000;
+
+    color: white;
+
+    border: none;
+
+}
+
+ 
+
+
+
+/* Styling Tombol Umum (yang Menerima Hover) */
+
+.btn-primary:hover, .shop-link:hover {
+
+    /* Ini adalah efek hover untuk tombol aktif */
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    transform: translateY(-1px);
+
+    cursor: pointer; /* Kursor berubah menjadi tangan */
+
+}
+
+
+
+/* Styling Tombol Saat Countdown Berjalan (Disabled) */
+
+.disabled-link {
+
+    /* **PALING PENTING:** Mencegah mouse event, termasuk klik dan hover */
+
+    pointer-events: none;
+
+   
+
+    /* Mengubah kursor mouse menjadi panah (default) */
+
+    cursor: default;    
+
+   
+
+    /* Membuat tampilan lebih redup saat nonaktif */
+
+    opacity: 0.5;        
+
+   
+
+    /* Memastikan tombol tidak berubah saat di-hover */
+
+    box-shadow: none !important;
+
+    transform: none !important;
+
+}
+
+
+
+/* Juga pastikan efek hover pada elemen aktif tidak berlaku saat disabled */
+
+.disabled-link:hover {
+
+    box-shadow: none !important;
+
+    transform: none !important;
+
+}
+
+
+
+/* Styling Khusus untuk Tombol Sold Out */
+
+.btn-sold-out {
+
+    /* Membuat tombol terlihat non-fungsional */
+
+    pointer-events: none;
+
+    cursor: default;    
+
+   
+
+    /* Ganti warna agar berbeda, misalnya abu-abu terang */
+
+    background-color: #cccccc !important;
+
+    color: #666666 !important;
+
+    opacity: 1;
+
+    box-shadow: none !important; /* Hilangkan bayangan/efek di sini */
+
+    transform: none !important; /* Hilangkan efek transfrom/angkat */
+
+}
+
+/* PENTING: Juga pastikan kelas sold out tidak memiliki efek hover */
+
+.btn-sold-out:hover {
+
+    box-shadow: none !important;
+
+    transform: none !important;
+
+}
+
+/* Footer */
+
+footer {
+
+    text-align: center;
+
+    padding: 20px;
+
+    background-color: #e9e9e9;
+
+    color: #666;
+
+    margin-top: 40px;
+
+}
 /* ============================================================
    5. PERBAIKAN KHUSUS SELULER (AGAR TIDAK TERLALU KECIL)
    ============================================================ */

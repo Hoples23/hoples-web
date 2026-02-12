@@ -806,24 +806,8 @@ footer {
 }/* ============================================================
    7. MEDIA QUERIES (PERBAIKAN SELULER) - JANGAN DIHAPUS
    ============================================================ */
-    /* Update pada Media Query 768px atau tambahkan di bawahnya */
+
 @media (max-width: 768px) {
-    .coming-soon-content {
-        display: block; /* Mengganti flex menjadi block lebih aman untuk Safari lama */
-        width: 100%;
-    }
-
-    .product-image-placeholder {
-        width: 100%;
-        height: 250px; /* Memberikan tinggi tetap yang aman di HP */
-        aspect-ratio: auto; /* Mematikan aspect ratio jika bentrok dengan height */
-    }
-
-    .launch-info {
-        width: 100%;
-        padding: 40px 20px;
-    }
-}
     /* Navbar Mobile */
     .navbar { padding: 10px 20px; }
     
@@ -847,21 +831,7 @@ footer {
     #articleGrid {
         grid-template-columns: 1fr;
         gap: 20px;
-    }/* Khusus untuk layar smartphone yang ramping (iPhone XS, Pro, etc) */
-@media (max-width: 375px) {
-    .time-box span:first-child {
-        font-size: 24px;
     }
-    
-    .launch-info h2 {
-        font-size: 22px;
-    }
-
-    .container {
-        width: 95%;
-        margin-top: 70px;
-    }
-}
 
     /* Banner Mobile */
     .full-width-banner { height: 150px; }
@@ -869,5 +839,3 @@ footer {
     /* Shop Links (Tombol Link) */
     .shop-link { width: 100%; max-width: none; }
 }
-
-

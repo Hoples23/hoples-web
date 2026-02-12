@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Online Kami - Hoples</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+        <div class="logo">
+            <h1>Hoples</h1>
+        </div>
+        
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger-menu" id="hamburger">
+            <span></span> 
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main class="container login-page">
+        <div class="login-form-container">
+            <h2>Pilih Toko Kami</h2>
+            <p>Temukan produk kami</p>
+            
+            <div class="link-list" style="margin-top: 30px;">
+                <a href="https://shopee.co.id/LINK_ANDA" target="_blank" class="btn-primary shop-link btn-shopee">Shopee</a>
+                <a href="https://www.tokopedia.com/LINK_ANDA" target="_blank" class="btn-primary shop-link btn-tokped">Tiktok Shop</a>
+                <a href="https://wa.me/LINK_ANDA" target="_blank" class="btn-primary shop-link btn-whatsapp">Instagram</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Hoples Studio. Hak Cipta Dilindungi.</p>
+    </footer>
+    </footer>
+    
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('open');
+        });
+    </script>
+
+</body>
+</html>

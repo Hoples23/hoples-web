@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Bisnis Anda - Toko Online Minimalis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <h1>Hoples</h1>
+        </div>
+        
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="index.html" class="active">Beranda</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger-menu" id="hamburger">
+            <span></span> 
+            <span></span>
+            <span></span>
+        </div>
+        
+        </header>
+
+    <main class="container coming-soon-page">
+        
+        <section class="coming-soon-content">
+            <div class="product-image-placeholder">
+                <img src="New Article .jpg" alt="Foto Produk Utama" class="main-product-img">
+            </div>
+
+            <div class="launch-info">
+                                <h2 id="mainHeading">Coming Soon</h2>
+                
+                                <p id="mainDescription" class="tagline"> Koleksi eksklusif. Siap diluncurkan dalam:</p>
+                
+                
+
+                
+                <div id="countdown" class="countdown-timer">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <span class="label">Hari</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <span class="label">Jam</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <span class="label">Menit</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <span class="label">Detik</span>
+                    </div>
+
+                </div>
+                
+<p class="cta-text"></p>
+<div class="subscribe-form">
+                                        <a href="#" id="orderButton" class="btn-primary disabled-link">Buy Now</a> 
+</div>
+                
+            </div>
+        </section>
+    </main>
+
+    <script src="countdown.js"></script>
+    <script>
+        // Skrip untuk fungsionalitas hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('open');
+        });
+    </script>
+    
+    <footer>
+        <p>&copy; 2024 Hopes Studio. Hak Cipta Dilindungi.</p>
+    </footer>
+
+</body>
+</html>

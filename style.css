@@ -1,841 +1,229 @@
-/* Reset CSS Dasar untuk tampilan yang konsisten */
+/* ============================================================
+   1. STRATEGI SKALA KONSISTEN (FLUID SYSTEM)
+   ============================================================ */
+:root {
+    /* Mengatur ukuran dasar yang akan mengecil sesuai lebar layar */
+    /* clamp(minimal, fleksibel, maksimal) */
+    --base-font: clamp(14px, 1.2vw, 18px);
+    --header-font: clamp(24px, 4vw, 42px);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: times new roman, Helvetica, Big Calson; /* Font sederhana dan bersih */
-    line-height: 1.6;
-    background-color: #f7f7f7; /* Latar belakang abu-abu terang yang lembut */
-    color: #333; /* Warna teks gelap standar */
+html {
+    /* Kunci utama: ukuran font html menentukan semua ukuran rem */
+    font-size: var(--base-font);
+    -webkit-text-size-adjust: 100%;
 }
 
-/* Navigasi (Header) */
+body {
+    font-family: 'Times New Roman', Helvetica, serif;
+    background-color: #f7f7f7;
+    color: #333;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* ============================================================
+   2. NAVBAR (UKURAN FLEKSIBEL)
+   ============================================================ */
 .navbar {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding: 15px 40px;
+    padding: 1rem 5vw; /* Padding mengecil di layar sempit */
+    height: clamp(50px, 8vw, 70px);
     background-color: #ffffff; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
-    position: fixed; /* Header tetap di atas */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
 }
 
-.logo {
-    order: 1; /* Logo di kiri */
-}
-
 .logo h1 {
-    font-family:'Times New Roman', Times, serif; /* Font yang elegan */
-    font-style: normal; /* Contoh: dibuat miring */
-    font-size: 20px;
-    font-weight: 500;
-    color: #333;
+    font-size: 1.2rem;
     letter-spacing: 1px;
 }
 
-/* ---------------------------------------------------- */
-/* Hamburger Menu (Selalu Tampil di Pojok Kanan) */
-/* ---------------------------------------------------- */
-.hamburger-menu {
-    display: block; /* Selalu tampilkan tombol hamburger */
-    cursor: pointer;
-    z-index: 1001;
-    order: 2; /* Posisikan Hamburger di kanan */
-    padding: 5px; 
+/* ============================================================
+   3. COMING SOON CONTENT (PROPORSI TETAP)
+   ============================================================ */
+.coming-soon-content {
+    display: flex;
+    /* Tetap berjajar (row) namun mengecil ukurannya */
+    flex-direction: row; 
+    width: 95%;
+    max-width: 1100px;
+    margin: 100px auto 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-/* Gaya ikon 3 garis */
+.product-image-placeholder {
+    flex: 1.2; /* Area gambar sedikit lebih lebar */
+    aspect-ratio: 4/3;
+}
+
+.main-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.launch-info {
+    flex: 1;
+    padding: 3vw; /* Padding otomatis mengecil */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.launch-info h2 {
+    font-size: var(--header-font);
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   4. TIMER & TOMBOL (CENTERED & SCALED)
+   ============================================================ */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5vw; /* Jarak antar kotak mengecil otomatis */
+    margin: 2rem 0;
+}
+
+.time-box {
+    background-color: #f7f7f7;
+    padding: 1vw;
+    min-width: clamp(50px, 15vw, 90px);
+    border-radius: 4px;
+}
+
+.time-box span:first-child {
+    display: block;
+    font-size: clamp(1.2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #333;
+    color: #fff !important;
+    padding: 0.8rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: 0.3s;
+    text-decoration: none;
+    margin: 0 auto;
+}
+/* ============================================================
+   2. NAVBAR DENGAN EFEK ASLI
+   ============================================================ */
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #ffffff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease; /* Efek transisi bar */
+}
+
+.logo h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Hamburger Menu Efek */
+.hamburger-menu {
+    display: block;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
+}
+
 .hamburger-menu span {
     display: block;
     width: 25px;
     height: 3px;
     margin: 4px 0;
     background: #333;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Efek gerak halus */
 }
 
-/* ---------------------------------------------------- */
-/* Navigasi Menu Vertikal (Tersembunyi Awal) */
-/* ---------------------------------------------------- */
+/* Navigasi Menu Vertikal (Slide Effect) */
 .nav-menu {
-    display: block; 
     position: fixed; 
-    top: 60px; 
+    top: 0; /* Full height dari atas */
     right: 0;
-    width: 0; /* Lebar awal nol (tersembunyi) */
-    height: 100%;
-    overflow-x: hidden; 
+    width: 0; /* Start tersembunyi */
+    height: 100vh;
     background-color: #ffffff;
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Efek slide in */
     z-index: 999;
-    padding-top: 0;
+    overflow-x: hidden;
+    padding-top: 80px; /* Ruang agar tidak tertutup navbar */
 }
 
-/* Status: Menu Aktif (Saat hamburger diklik) */
 .nav-menu.active {
-    width: 250px; /* Lebar menu vertikal saat terbuka */
-    padding-top: 15px;
+    width: 280px; /* Lebar saat aktif */
 }
 
 .nav-menu ul {
     list-style: none;
     display: flex;
-    flex-direction: column; /* Menu vertikal */
-    margin: 0;
-    padding: 0;
-}
-
-.nav-menu ul li {
-    margin: 0;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-}
-
-.nav-menu ul li:last-child {
-    border-bottom: none;
+    flex-direction: column;
 }
 
 .nav-menu ul li a {
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    padding: 12px 20px;
+    padding: 15px 30px;
     display: block;
-    transition: background-color 0.3s;
-}
-
-.nav-menu ul li a:hover,
-.nav-menu ul li a.active {
-    color: #000;
-    background-color: #f7f7f7;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #555;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-    color: #000; /* Warna hitam pekat saat di-hover/aktif */
-}
-
-/* ---------------------------------------------------- */
-/* Gaya Khusus untuk Tombol Login di dalam Menu Vertikal */
-/* ---------------------------------------------------- */
-.nav-menu ul li .btn-menu-login {
-    /* Gaya untuk membuat tombol Login menjadi putih dengan border abu-abu */
-    background-color: #ffffff; /* Latar belakang putih */
-    color: #333; /* Warna teks hitam/gelap */
-    border: 1px solid #999; /* Border abu-abu tipis */
-    
-    border-radius: 4px;
-    margin: 10px 20px; 
-    padding: 10px;
-    text-align: center;
-    font-weight: 700;
-}
-
-.nav-menu ul li .btn-menu-login:hover {
-    /* Efek hover: latar belakang menjadi abu-abu terang */
-    background-color: #f0f0f0;
-    color: #333;
-    border-color: #777;
-}
-
-/* Konten Utama */
-.container {
-    width: 90%;
-    max-width: 1200px; /* Batasi lebar agar tetap mudah dibaca */
-    margin: 40px auto; /* Pusatkan di tengah */
-    padding: 0 20px;
-}
-
-/* Bagian Hero (Sambutan) */
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-    margin-bottom: 40px;
-    background-color: #ffffff;
-    border-radius: 8px;
-}
-
-.hero h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #666;
-}
-
-/* Tombol Utama */
-.btn-primary {
-    text-decoration: none;
-    background-color: #333;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 4px;
-    font-weight: 100;
-    transition: background-color 0.3s;
-    font-family: 'Helvetica', sans-serif; /* Font yang berbeda */
-    font-style: normal; /* Contoh: dibuat miring */
-    font-size: 15px;
-    font-weight: normal;
-    letter-spacing: 0.7px;
-}
-
-.btn-primary:hover {
-    background-color: #555;
-}
-
-/* Contoh Konten Produk */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    text-align: center;
-}
-
-.product-item {
-    background-color: #fff;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    color: #999;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #e9e9e9;
-    color: #666;
-    margin-top: 40px;
-}
-
-/* Styling Halaman Coming Soon */
-.coming-soon-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 120px); /* Memastikan konten berada di tengah halaman */
-}
-
-.coming-soon-content {
-    display: flex;
-    max-width: 1000px;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    overflow: hidden; /* Penting untuk gambar */
-}
-
-/* Sisi Gambar Produk */
-.product-image-placeholder {
-    flex: 1; 
-    /* 1. Kunci Rasio Gambar menjadi 4:3 (Contoh) */
-    aspect-ratio: 4 / 3; 
-    /* Anda bisa ganti 4/3 menjadi 1/1 untuk persegi, atau 16/9 untuk lebar */
-    background-color: #eee;
-}
-
-.main-product-img {
-    width: 100%;
-    height: 100%; 
-    /* 2. Pastikan foto mengisi ruang yang terkunci */
-    object-fit: cover; 
-    display: block;
-}
-
-/* Sisi Informasi Peluncuran */
-.launch-info {
-    flex: 1; /* Ambil setengah ruang */
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.launch-info h2 {
-    font-size: 38px;
-    margin-bottom: 5px;
-    font-weight: 300; /* Font tipis untuk kesan minimalis */
-}
-
-.brand-name {
-    font-weight: 700;
-    color: #333;
-}
-
-.tagline {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 30px;
-}
-
-/* Styling Hitungan Mundur */
-.countdown-timer {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.time-box {
-    background-color: #f7f7f7;
-    padding: 15px 10px;
-    border-radius: 4px;
-    flex-basis: 25%; /* Memastikan 4 kotak berbagi ruang secara merata */
-}
-
-.time-box span:first-child { /* Angka Waktu */
-    display: block;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-}
-
-.time-box .label { /* Label (Hari, Jam, dll) */
-    display: block;
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Form Pendaftaran Email (Subscribe) */
-.subscribe-form {
-    display: flex;
-    margin-top: 15px;
-}
-
-/* Styling Halaman Login */
-.login-page {
-    /* Menggunakan Flexbox untuk memusatkan form di tengah layar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 120px); /* Memastikan form berada di tengah halaman */
-}
-
-.login-form-container {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px; /* Batasi lebar agar tetap minimalis */
-    text-align: center;
-}
-
-.login-form-container h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-    font-weight: 400; /* Teks agak tipis */
-}
-
-/* Styling Grup Formulir (Label dan Input) */
-.form-group {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-    font-size: 14px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus {
-    border-color: #000; /* Border menjadi hitam saat fokus */
-    outline: none;
-}
-
-/* Tombol Login */
-.login-btn {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-}
-
-/* Teks Bawah Formulir */
-.form-footer {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #666;
-}
-
-.form-footer a {
-    color: #000;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-.form-footer a:hover {
-    text-decoration: underline;
-    color: #555;
-}
-
-/* Styling Pesan Error Validasi */
-.error-message {
-    color: #cc0000; /* Warna merah untuk error */
-    font-size: 13px;
-    margin-top: 5px;
-    display: block; /* Pastikan pesan error tampil di baris baru */
-    height: 1.2em; /* Beri sedikit ruang agar tata letak tidak meloncat */
-}
-
-/* Styling Tombol Logout */
-.btn-logout {
-    text-decoration: none;
-    padding: 8px 18px;
-    border: 1px solid #999; 
-    color: #555;
-    background-color: transparent;
-    border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
-    font-weight: 600;
-    margin-left: 10px; /* Jarak dari tombol Akun Saya */
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.btn-logout:hover {
-    background-color: #ddd;
-    color: #333;
-}
-
-/* Styling Dashboard Akun */
-.account-dashboard {
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.account-dashboard h2 {
-    font-size: 32px;
-    font-weight: 300;
-    margin-bottom: 5px;
-}
-
-.account-dashboard .tagline {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 40px;
-}
-
-.account-panels {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.panel-item {
-    padding: 30px;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    transition: box-shadow 0.3s;
-}
-
-.panel-item:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-.panel-item h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.panel-item p {
-    color: #555;
-    margin-bottom: 15px;
-}
-
-/* Tombol Sekunder */
-.btn-secondary {
-    text-decoration: none;
+.nav-menu ul li a:hover {
+    background-color: #f7f7f7;
     color: #000;
-    border-bottom: 2px solid #000; /* Garis bawah minimalis */
-    padding-bottom: 2px;
-    font-weight: 600;
-    font-size: 14px;
-    transition: opacity 0.3s;
 }
 
-.btn-secondary:hover {
-    opacity: 0.7;
-}
-
-.account-details {
-    margin-top: 30px;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-
-/* Styling Khusus Halaman shoplinks.html */
-.shop-links-container-page {
-    /* Hanya untuk memberikan margin di atas daftar link */
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.shop-links-container-page h2 {
-    margin-bottom: 5px;
-}
-
-.shop-links-container-page p {
-    margin-bottom: 30px;
-    color: #555;
-}
-
-/* Penataan Daftar Tautan */
-.link-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Jarak antar tombol */
-    width: 100%;
-    align-items: center; /* Memastikan semua link terpusat */
-}
-
-/* Tampilan Tombol Tautan */
-.shop-link {
-    width: 90%;
-    max-width: 350px; /* Batasi lebar tombol agar terlihat elegan */
-    padding: 15px 25px; /* Padding lebih besar agar mudah diklik */
-    text-align: center;
-    text-decoration: none;
-    font-weight: 700; /* Font lebih tebal */
-    font-size: 16px;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
-}
-
-.shop-link:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
-}
-
-/* Styling Khusus untuk Tombol Brand */
-/* Ganti warna ini agar sesuai dengan palet Hoples */
-.btn-shopee {
-    background-color: #f3f3f3; 
-    color: rgb(5, 5, 5);
-    border: 1px solid #000;
-}
-.btn-tokped {
-    background-color: #f3f3f3;
-    color: rgb(8, 8, 8);
-    border: 1px solid #000;
-}
-.btn-whatsapp {
-    background-color: #f3f3f3;
-    color: rgb(5, 5, 5);
-    border: 1px solid #000;
-}
-.btn-website {
-    background-color: #000;
-    color: white;
-    border: none;
-}
- 
-
-/* Styling Tombol Umum (yang Menerima Hover) */
-.btn-primary:hover, .shop-link:hover {
-    /* Ini adalah efek hover untuk tombol aktif */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
-    cursor: pointer; /* Kursor berubah menjadi tangan */
-}
-
-/* Styling Tombol Saat Countdown Berjalan (Disabled) */
-.disabled-link {
-    /* **PALING PENTING:** Mencegah mouse event, termasuk klik dan hover */
-    pointer-events: none; 
-    
-    /* Mengubah kursor mouse menjadi panah (default) */
-    cursor: default;     
-    
-    /* Membuat tampilan lebih redup saat nonaktif */
-    opacity: 0.5;        
-    
-    /* Memastikan tombol tidak berubah saat di-hover */
-    box-shadow: none !important;
-    transform: none !important;
-}
-
-/* Juga pastikan efek hover pada elemen aktif tidak berlaku saat disabled */
-.disabled-link:hover {
-    box-shadow: none !important;
-    transform: none !important;
-}
-
-/* Styling Khusus untuk Tombol Sold Out */
-.btn-sold-out {
-    /* Membuat tombol terlihat non-fungsional */
-    pointer-events: none; 
-    cursor: default;     
-    
-    /* Ganti warna agar berbeda, misalnya abu-abu terang */
-    background-color: #cccccc !important; 
-    color: #666666 !important;
-    opacity: 1; 
-    box-shadow: none !important; /* Hilangkan bayangan/efek di sini */
-    transform: none !important; /* Hilangkan efek transfrom/angkat */
-}
-/* PENTING: Juga pastikan kelas sold out tidak memiliki efek hover */
-.btn-sold-out:hover {
-    box-shadow: none !important;
-    transform: none !important;
-}
-
-
-/* ======================================= */
-/* Styling Halaman Koleksi (Collection) */
-/* ======================================= */
-
-.collection-page {
-    /* Mirip dengan dashboard, untuk padding */
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-#collectionTitle {
-    font-size: 32px;
-    font-weight: 300;
-    margin-bottom: 5px;
-}
-/* Styling GRID ARTIKEL Menjadi Full-Width */
-#articleGrid {
-    /* ... properti full-width tetap sama ... */
-    display: grid;
-    
-    /* 1. TAMPILAN DESKTOP BESAR (Default, misalnya > 1024px) */
-    /* Atur 6 kolom */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
-    
-    /* ... properti lain tetap sama ... */
-}
-
-/* Media Query untuk Tablet/Laptop Menengah (misalnya di bawah 1024px) */
-@media (max-width: 1024px) {
-    #articleGrid {
-        /* 2. TAMPILAN TABLET: Atur 3 kolom */
-        grid-template-columns: repeat(3, 1fr);
-        padding: 0 30px; 
-    }
-}
-
-/* Media Query untuk Ponsel (misalnya di bawah 768px) */
-@media (max-width: 768px) {
-    #articleGrid {
-        /* 3. TAMPILAN SELULER: Atur 1 kolom */
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        padding: 0 15px;
-    }
-}
-.article-item {
-    background-color: #ffffff;
-    border: 1px solid #d4d4d4;
-    border-radius: 6px;
-    /* TAMBAHKAN ATAU VERIFIKASI BARIS INI: Mencegah gambar meluap */
-    overflow: hidden; 
-    
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.10);
-    transition: box-shadow 0.3s;
-}
-
-.article-item img {
-    width: 100%;
-    /* Menggunakan rasio aspek CSS modern (lebih baik daripada height tetap) */
-    aspect-ratio: 4 / 3; 
-    object-fit: cover; 
-    object-position: center top; 
-    display: block;
-}
-
-.article-item:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.article-item h3 {
-    padding: 15px 15px 5px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #333;
-}
-
-.article-item p {
-    padding: 0 15px 15px;
-    font-size: 12px;
-    color: #666;
-}
-
-.article-item .btn-secondary {
-    display: inline-block;
-    margin: 0 15px 15px;
-    /* Hapus border-bottom agar lebih bersih di kartu */
-    border-bottom: none; 
-}
-
-/* ======================================= */
-/* Styling Banner Full-Width Collection (Posisi Absolut) */
-/* ======================================= */
-
-.full-width-banner {
-    /* Container luar untuk memberikan latar belakang full-width */
-    width: 100%;
-    background-color: #adadad; 
-    padding: 0px 0; 
-    margin-top: 60px;
-    text-align: center;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6); 
-    /* PENTING: Menetapkan konteks posisi relatif untuk banner */
-    position: relative; 
-    overflow: hidden; 
-    
-    /* Kunci Tinggi Banner (Anda bisa ubah 200px ini) */
-    height: 200px; 
-}
-
-.banner-content {
-    /* Konten di dalamnya dibatasi dan dipusatkan */
-    width: 90%;
-    max-width: 1200px; 
-    margin: 0 auto; 
-    
-    /* Posisikan Konten di atas Banner */
-    position: relative; 
-    z-index: 20; /* Lebih tinggi dari banner overlay */
-    height: 100%;
-    
-    /* Gunakan Flexbox untuk memusatkan Judul dalam kotak 200px */
-    display: flex;
-    align-items: center; 
-    justify-content: flex-start; /* Rata kiri */
-}
-
-/* Judul (H2) */
-.banner-content h2 {
-    font-size: 48px; 
-    font-weight: 700;
-    margin: 0;
-    color: #333;
-    padding: 0; 
-    text-align: left;
-    opacity:0%
-}
-
-/* Banner Image Container (FULL-SCREEN WIDTH) */
-.banner-content .banner-overlay {
-    /* Kunci: Posisikan secara absolut dari full-width-banner */
-    position: absolute;
-    top: 0;
-    left: 50%;
-    
-    /* Kunci: Mengisi 100% lebar viewport (layar) */
-    width: 100vw; 
-    
-    /* Kunci: Mengisi 100% tinggi full-width-banner */
-    height: 100%;
-    
-    /* Penyesuaian agar posisi rata kiri/kanan di viewport */
-    transform: translateX(-50%); 
-
-    z-index: 10; 
-    overflow: hidden;
-    
-    /* Gunakan Flexbox untuk memposisikan gambar di dalam overlay */
-    display: flex; 
-    align-items: flex-start; 
-    justify-content: flex-end;
-    pointer-events: none;
-}
-
-/* Gambar itu Sendiri */
-.banner-content .banner-img {
-    width: 100%;
-    height: 100%; 
-    object-fit: cover; /* Pastikan gambar mengisi seluruh area 100vw x 200px */
-    opacity: 50%;
-}/* ============================================================
-   7. MEDIA QUERIES (PERBAIKAN SELULER) - JANGAN DIHAPUS
+/* ============================================================
+   5. PERBAIKAN KHUSUS SELULER (AGAR TIDAK TERLALU KECIL)
    ============================================================ */
-
-@media (max-width: 768px) {
-    /* Navbar Mobile */
-    .navbar { padding: 10px 20px; }
-    
-    /* Hero & Teks */
-    .hero h2 { font-size: 28px; }
-
-    /* Coming Soon: Ubah Samping ke Tumpuk Vertikal */
+@media (max-width: 600px) {
+    /* Jika di HP tampilan Row (sampingan) terlalu sempit, 
+       kita hanya ubah tumpukannya agar tetap terbaca */
     .coming-soon-content {
-        flex-direction: column;
+        flex-direction: column; 
     }
 
     .launch-info {
-        padding: 30px 20px;
-        text-align: center;
+        padding: 8vw 5vw;
     }
 
-    .countdown-timer { gap: 10px; }
-    .time-box span:first-child { font-size: 24px; }
-
-    /* Grid Artikel: Ubah ke 1 Kolom agar tidak sempit */
-    #articleGrid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    /* Memastikan tombol "Buy Now" tetap center dan ukurannya pas di jempol */
+    .btn-primary {
+        width: 70%;
+        max-width: 250px;
+        padding: 1rem;
     }
-
-    /* Banner Mobile */
-    .full-width-banner { height: 150px; }
-
-    /* Shop Links (Tombol Link) */
-    .shop-link { width: 100%; max-width: none; }
 }
